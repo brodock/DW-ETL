@@ -1,15 +1,13 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
+##
+# Simple Task - Declara os métodos básicos necessários
+#
 class Task
-  def initialize(model)
-    @model = model
-    @xpathes = []
-    @attributes []
+  attr_reader :name
+  def initialize(name)
+    @name = name
   end
 
-  def << xpath, attribute
-    @xpathes << xpath
-    @attributes << attribute
+  def execute(doc)
+    puts "Essa task não definiu um plano de execuçãos"
   end
 end
