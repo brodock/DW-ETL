@@ -1,6 +1,5 @@
 require "rubygems"
 require "xml"
-#require "db"
 
 class ParserXML
   attr_reader :files, :tags, :xml

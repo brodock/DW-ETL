@@ -1,7 +1,9 @@
+require 'benchmark'
+
 require 'parser'
 require 'task'
 require 'dados_gerais_task'
-require 'benchmark'
+require 'db'
 
 class Staging
 
