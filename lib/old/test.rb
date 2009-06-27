@@ -12,3 +12,5 @@ class Test
     @doc = XML::Document.io(File.new(@files.first))
   end
 end
+
+doc = Test.new.doc

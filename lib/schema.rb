@@ -7,18 +7,12 @@ ActiveRecord::Schema.define do
     t.column :uf_nascimento, :string, :size => 2
   end
 
-#  create_table :tasks do |t|
-#    t.column :description, :string
-#    t.column :status, :string
-#    t.column :context_id, :integer
-#    t.column :project_id, :integer
-#  end
-#
-#  create_table :contexts do |t|
-#    t.column :name, :string
-#  end
-#
-#  create_table :projects do |t|
-#    t.column :name, :string
-#  end
+  create_table :graduacao do |t|
+    t.column :dados_gerais_id, :integer
+    t.column :ano_de_inicio, :integer
+    t.column :ano_de_conclusao, :integer
+    t.column :nome_curso, :string
+    t.column :nome_instituicao, :string
+  end
+
 end
