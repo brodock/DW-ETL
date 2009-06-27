@@ -1,7 +1,3 @@
-['/model', '/db'].each do |folder|
-  $:.unshift File.dirname(__FILE__) + folder
-end
-      
 require 'test/unit'
 require 'rubygems'
 require 'activerecord'
