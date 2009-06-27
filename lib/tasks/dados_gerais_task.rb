@@ -26,6 +26,17 @@ class DadosGeraisTask < Task
         g.save
       end
 
+      #Especialização
+      nodes_especializacao = np.find('FORMACAO-ACADEMICA-TITULACAO/ESPECIALIZACAO')
+      nodes_especializacao.each do |ne|
+        m = Especializacao.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(ne),
+          :curso_id => find_curso(ne),
+          :ano_de_inicio => ne['ANO-DE-INICIO'],
+          :ano_de_conclusao => ne['ANO-DE-CONCLUSAO'],
+          :status_do_curso => ne['STATUS-DO-CURSO'])
+        m.save
+      end
+
       #Mestrado
       nodes_mestrado = np.find('FORMACAO-ACADEMICA-TITULACAO/MESTRADO')
       nodes_mestrado.each do |nm|
