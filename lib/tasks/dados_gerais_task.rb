@@ -10,14 +10,14 @@ class DadosGeraisTask < Task
 
     nodes_pessoa = doc.find(xpath)
     nodes_pessoa.each do |np|
-      d = DadosGerais.new(:nome_completo => np['NOME-COMPLETO'], :sexo => np['SEXO'],
+      p = DadosGerais.new(:nome_completo => np['NOME-COMPLETO'], :sexo => np['SEXO'],
         :cidade_nascimento => np['CIDADE-NASCIMENTO'], :uf_nascimento => np['UF-NASCIMENTO'])
-      d.save
+      p.save
       
       # Graduacao
       nodes_graduacao = np.find('FORMACAO-ACADEMICA-TITULACAO/GRADUACAO')
       nodes_graduacao.each do |ng|
-        g = Graduacao.new(:dados_gerais_id => d.id, :instituicao_id => find_instituicao(ng),
+        g = Graduacao.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(ng),
           :ano_de_inicio => ng['ANO-DE-INICIO'],
           :ano_de_conclusao => ng['ANO-DE-CONCLUSAO'],
           :nome_curso => ng['NOME-CURSO'],
@@ -28,13 +28,26 @@ class DadosGeraisTask < Task
       #Mestrado
       nodes_mestrado = np.find('FORMACAO-ACADEMICA-TITULACAO/MESTRADO')
       nodes_mestrado.each do |nm|
-        m = Mestrado.new(:dados_gerais_id => d.id, :instituicao_id => find_instituicao(nm),
+        m = Mestrado.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(nm),
           :ano_de_inicio => nm['ANO-DE-INICIO'],
           :ano_de_conclusao => nm['ANO-DE-CONCLUSAO'],
           :nome_curso => nm['NOME-CURSO'],
           :status_do_curso => nm['STATUS-DO-CURSO'])
         m.save
       end
+
+      #Doutorado
+      nodes_doutorado = np.find('FORMACAO-ACADEMICA-TITULACAO/DOUTORADO')
+      nodes_doutorado.each do |nd|
+        d = Doutorado.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(nd),
+          :ano_de_inicio => nd['ANO-DE-INICIO'],
+          :ano_de_conclusao => nd['ANO-DE-CONCLUSAO'],
+          :nome_curso => nd['NOME-CURSO'],
+          :status_do_curso => nd['STATUS-DO-CURSO'])
+        d.save
+      end
+
+
     end
 
   end
