@@ -7,7 +7,7 @@ puts "Importador de XML para base relaciona MySQL"
 class ParserXML
   attr_reader :files, :tags, :xml
 
-  MAX_AMOUNT_OF_FILES = 200
+  MAX_AMOUNT_OF_FILES = 1000
   def initialize
     @path = "/Users/brodock/Projetos/XML"
     @files = Dir.glob("#{@path}/*.xml")
@@ -31,7 +31,7 @@ class ParserXML
   end
 
   protected
-  def recursive_walk(tree, tags)
+  def recursive_walk_new(tree, tags)
 
     tree.each do |c|
         unless tags.member?(c.name) # Se não existir no hash, armazenar o node
@@ -50,7 +50,7 @@ class ParserXML
     tags
   end
 
-  def recursive_walk_old(tree, tags)
+  def recursive_walk(tree, tags)
     arraytags = {}
     arraynodes = []
     unless tree.child.nil?

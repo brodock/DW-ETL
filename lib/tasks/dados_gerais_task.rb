@@ -4,18 +4,13 @@ class DadosGeraisTask < Task
   end
 
   def execute(doc)
-    attributes = []
-    attributes << 'NOME-COMPLETO'
-    attributes << 'CIDADE-NASCIMENTO'
 
     xpath = '/CURRICULO-VITAE/DADOS-GERAIS'
 
     node = doc.find(xpath)
     node.each do |item|
-      attributes.each do |attr|
-        print item[attr], ' '
-      end
-      puts
+      d = DadosGerais.new(:nome_completo => item['NOME-COMPLETO'], :cidade_nascimento => item['CIDADE-NASCIMENTO'])
+      d.save
     end
 
   end
