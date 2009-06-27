@@ -8,8 +8,9 @@ class DadosGeraisTask < Task
     xpath = '/CURRICULO-VITAE/DADOS-GERAIS'
 
     node = doc.find(xpath)
-    node.each do |item|
-      d = DadosGerais.new(:nome_completo => item['NOME-COMPLETO'], :cidade_nascimento => item['CIDADE-NASCIMENTO'])
+    node.each do |n|
+      d = DadosGerais.new(:nome_completo => n['NOME-COMPLETO'], :sexo => n['SEXO'],
+        :cidade_nascimento => n['CIDADE-NASCIMENTO'], :uf_nascimento => n['UF-NASCIMENTO'])
       d.save
     end
 

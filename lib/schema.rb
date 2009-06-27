@@ -1,7 +1,10 @@
+require 'db'
 ActiveRecord::Schema.define do
   create_table :dados_gerais do |t|
     t.column :nome_completo, :string
+    t.column :sexo, :string
     t.column :cidade_nascimento, :string
+    t.column :uf_nascimento, :string, :size => 2
   end
 
 #  create_table :tasks do |t|
