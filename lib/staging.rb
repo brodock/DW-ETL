@@ -1,9 +1,4 @@
-require 'benchmark'
-
-require 'parser'
-require 'task'
-require 'dados_gerais_task'
-require 'db'
+require 'setup'
 
 class Staging
 
