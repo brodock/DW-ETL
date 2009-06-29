@@ -1,5 +1,5 @@
 class ParserXML
-  attr_reader :files, :tags, :xml
+  attr_reader :files
 
   MAX_AMOUNT_OF_FILES = 5000
   def initialize
@@ -7,10 +7,9 @@ class ParserXML
     @files = Dir.glob("#{@path}/*.xml")
   end
 
-  def parse_libxml(task)
+  def parse_libxml(&block)
     resultdoc = XML::Document.new
     resultdoc.root = XML::Node.new 'CURRICULO-VITAE'
-    @tags = {}
     
     ActiveRecord::Base.transaction do
       
@@ -22,7 +21,7 @@ class ParserXML
         file = File.new(@files[i])
         begin
           doc = XML::Document.io(file, :encoding => XML::Encoding::ISO_8859_1)
-          task.execute(doc)
+          yield doc
         rescue LibXML::XML::Error => e
           puts "Falha ao processar arquivo: #{@files[i]} (#{i})"
           puts "Erro: #{e}"

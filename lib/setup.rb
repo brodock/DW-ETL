@@ -2,7 +2,8 @@ require 'benchmark'
 
 # Gems
 require 'rubygems'
-require 'xml'
+require 'xml' # Libxml-Ruby
+require 'brstring' # From Brazilian Rails
 
 # Core of the project
 require 'parser'

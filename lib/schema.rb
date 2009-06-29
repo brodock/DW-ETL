@@ -24,7 +24,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
   end
-  
+    
   create_table :especializacao, :force => true do |t|
     t.column :dados_gerais_id, :integer
     t.column :curso_id, :integer

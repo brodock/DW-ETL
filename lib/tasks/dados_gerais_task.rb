@@ -3,9 +3,14 @@ class DadosGeraisTask < Task
     super('Dados Gerais')
     @instituicoes = {}
     @cursos = {}
+    @parser = ParserXML.new
   end
 
-  def execute(doc)
+  def execute()
+    @parser.parse_libxml {|doc| parse(doc)}
+  end
+
+  def parse(doc)
 
     xpath = '/CURRICULO-VITAE/DADOS-GERAIS'
 

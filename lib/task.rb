@@ -7,7 +7,7 @@ class Task
     @name = name
   end
 
-  def execute(doc)
+  def execute
     puts "Essa task não definiu um plano de execuçãos"
   end
 end
