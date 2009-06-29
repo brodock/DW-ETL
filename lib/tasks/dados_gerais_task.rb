@@ -42,6 +42,17 @@ class DadosGeraisTask < Task
         m.save
       end
 
+      #Mba
+      nodes_mba = np.find('FORMACAO-ACADEMICA-TITULACAO/MBA')
+      nodes_mba.each do |nm|
+        m = Mba.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(nm),
+          :curso_id => find_curso(nm),
+          :ano_de_inicio => nm['ANO-DE-INICIO'],
+          :ano_de_conclusao => nm['ANO-DE-CONCLUSAO'],
+          :status_do_curso => nm['STATUS-DO-CURSO'])
+        m.save
+      end
+
       #Mestrado
       nodes_mestrado = np.find('FORMACAO-ACADEMICA-TITULACAO/MESTRADO')
       nodes_mestrado.each do |nm|
@@ -57,6 +68,17 @@ class DadosGeraisTask < Task
       nodes_doutorado = np.find('FORMACAO-ACADEMICA-TITULACAO/DOUTORADO')
       nodes_doutorado.each do |nd|
         d = Doutorado.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(nd),
+          :curso_id => find_curso(nd),
+          :ano_de_inicio => nd['ANO-DE-INICIO'],
+          :ano_de_conclusao => nd['ANO-DE-CONCLUSAO'],
+          :status_do_curso => nd['STATUS-DO-CURSO'])
+        d.save
+      end
+
+      #Pos-Doutorado
+      nodes_pos_doutorado = np.find('FORMACAO-ACADEMICA-TITULACAO/POS-DOUTORADO')
+      nodes_pos_doutorado.each do |nd|
+        d = PosDoutorado.new(:dados_gerais_id => p.id, :instituicao_id => find_instituicao(nd),
           :curso_id => find_curso(nd),
           :ano_de_inicio => nd['ANO-DE-INICIO'],
           :ano_de_conclusao => nd['ANO-DE-CONCLUSAO'],

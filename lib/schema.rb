@@ -52,4 +52,13 @@ ActiveRecord::Schema.define do
     t.column :status_do_curso, :string, :limit => 12
   end
 
+  create_table :pos_doutorado, :force => true do |t|
+    t.column :dados_gerais_id, :integer
+    t.column :curso_id, :integer
+    t.column :instituicao_id, :integer
+    t.column :ano_de_inicio, :integer, :size => 4
+    t.column :ano_de_conclusao, :integer, :size => 4
+    t.column :status_do_curso, :string, :limit => 12
+  end
+
 end
