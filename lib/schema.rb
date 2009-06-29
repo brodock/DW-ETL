@@ -23,6 +23,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_inicio, :integer, :size => 4
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
+    t.column :duracao, :integer
   end
     
   create_table :especializacao, :force => true do |t|
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_inicio, :integer, :size => 4
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
+    t.column :duracao, :integer
   end
 
   create_table :mestrado, :force => true do |t|
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_inicio, :integer, :size => 4
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
+    t.column :duracao, :integer
   end
 
   create_table :doutorado, :force => true do |t|
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_inicio, :integer, :size => 4
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
+    t.column :duracao, :integer
   end
 
   create_table :pos_doutorado, :force => true do |t|
@@ -59,6 +63,7 @@ ActiveRecord::Schema.define do
     t.column :ano_de_inicio, :integer, :size => 4
     t.column :ano_de_conclusao, :integer, :size => 4
     t.column :status_do_curso, :string, :limit => 12
+    t.column :duracao, :integer
   end
 
 end
